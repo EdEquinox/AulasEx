@@ -1,4 +1,4 @@
-package pt.isec.pa.aulas.Ex04;
+package pt.isec.pa.aulas.ex4;
 
 import java.util.Arrays;
 import java.util.Random;

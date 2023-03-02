@@ -1,4 +1,4 @@
-package pt.isec.pa.aulas;
+package pt.isec.pa.aulas.ex2;
 
 import java.util.Scanner;
 
