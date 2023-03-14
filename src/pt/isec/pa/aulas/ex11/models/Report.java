@@ -1,21 +1,22 @@
 package pt.isec.pa.aulas.ex11.models;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Report {
     private static final int MAX_AUTH = 5;
-    private static final int INC_AUTHORS = 5;
+    //private static final int INC_AUTHORS = 5;
     private String title;
-    private String[] authors;
+    private ArrayList<String> authors;
     private StringBuilder text;
     private int qtAuthors;
 
     public Report(String title) {
         this.title = title;
         this.text = new StringBuilder();
-        this.authors = new String[MAX_AUTH];
+        this.authors = new ArrayList<String>();
         this.qtAuthors = 0;
     }
 
@@ -31,7 +32,7 @@ public class Report {
         return qtAuthors;
     }
 
-    public String[] getAuthors() {
+    public ArrayList<String> getAuthors() {
         return authors;
     }
 
@@ -43,7 +44,7 @@ public class Report {
         this.text = text;
     }
 
-    public void setAuthors(String[] authors) {
+    public void setAuthors(ArrayList<String> authors) {
         this.authors = authors;
     }
 
@@ -56,36 +57,37 @@ public class Report {
     }
 
     public boolean addAuthor(String author) {
-        if (qtAuthors<0 || author.isBlank()){
+        if ( author.isBlank() || authors.contains(author)){
             return false;
         }
-        for (int i=0;i<qtAuthors;i++){
-            if (authors[i].equalsIgnoreCase(author)){
-                return false;
-            }
-        }
-        if (qtAuthors >= authors.length){
-            String[] new_authors = new String[authors.length+INC_AUTHORS];
-            System.arraycopy(authors,0,new_authors,0,authors.length);
-            authors = new_authors;
-            //alternativa
-            //authors = Arrays.copyOf(authors,authors.length+INC_AUTHORS);
-        }
-        authors[qtAuthors++] = author;
+//        for (int i=0;i<qtAuthors;i++){
+//            if (authors[i].equalsIgnoreCase(author)){
+//                return false;
+//            }
+//        }
+//        if (qtAuthors >= authors.length){
+//            String[] new_authors = new String[authors.length+INC_AUTHORS];
+//            System.arraycopy(authors,0,new_authors,0,authors.length);
+//            authors = new_authors;
+//            //alternativa
+//            //authors = Arrays.copyOf(authors,authors.length+INC_AUTHORS);
+//        }
+        authors.add(author);
         return true;
     }
 
     public boolean removeAuthor(String author) {
-        for (int i=0;i<MAX_AUTH;i++){
-            if (authors[i].equalsIgnoreCase(author)){
-                for (int j =i;j<qtAuthors-1;j++){
-                    authors[j] = authors[j+1];
-                }
-                qtAuthors--;
-                authors[qtAuthors]=null;
-                return true;
-            }
-        }
+//        for (int i=0;i<MAX_AUTH;i++){
+//            if (authors[i].equalsIgnoreCase(author)){
+//                for (int j =i;j<qtAuthors-1;j++){
+//                    authors[j] = authors[j+1];
+//                }
+//                qtAuthors--;
+//                authors[qtAuthors]=null;
+//                return true;
+//            }
+//        }
+        authors.remove(author);
         return false;
     }
 
@@ -145,11 +147,11 @@ public class Report {
         StringBuilder sb = new StringBuilder("Report\n");
         sb.append(String.format("Title: %s\n",title));
         sb.append("Authors: ");
-        for (int i=0;i<qtAuthors;i++){
+        for (int i=0;i<authors.size();i++){
             if (i>0){
                 sb.append(", ");
             }
-            sb.append(authors[i]);
+            sb.append(authors.get(i));
         }
         sb.append("\nText: \n");
         sb.append(text);
