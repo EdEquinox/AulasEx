@@ -8,6 +8,6 @@ public class Main {
         Library library = new Library("DEIS-ISEC");
         LibraryUI libraryUI = new LibraryUI(library);
 
-        libraryUI.begin();
+        libraryUI.start();
     }
 }
