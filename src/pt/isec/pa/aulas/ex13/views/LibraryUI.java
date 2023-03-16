@@ -1,14 +1,15 @@
 package pt.isec.pa.aulas.ex13.views;
 
 import pt.isec.pa.aulas.ex13.models.Book;
-import pt.isec.pa.aulas.ex13.models.Library;
+import pt.isec.pa.aulas.ex13.models.ILibrary;
+import pt.isec.pa.aulas.ex13.models.LibraryList;
 import pt.isec.pa.aulas.utils.PAInput;
 
 import java.util.ArrayList;
 
 public class LibraryUI {
-    Library lib;
-    public LibraryUI(Library lib) {
+    ILibrary lib;
+    public LibraryUI(ILibrary lib) {
         this.lib = lib;
     }
 

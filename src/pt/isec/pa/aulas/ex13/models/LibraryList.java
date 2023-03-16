@@ -1,19 +1,23 @@
 package pt.isec.pa.aulas.ex13.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Library {
+public class LibraryList implements ILibrary {
     private String name;
-    ArrayList<Book> lstBooks;
-    public Library(String s) {
+    private List<Book> lstBooks;
+    public LibraryList(String s) {
         this.name = s;
+        lstBooks = new ArrayList<>();
     }
 
+    @Override
     public void addBook(String title, ArrayList<String> authors) {
         Book book = new Book(title,authors);
         lstBooks.add(book);
     }
 
+    @Override
     public Book findBook(int bookId) {
         if (lstBooks == null || lstBooks.size()==0)
             return null;
@@ -21,7 +25,9 @@ public class Library {
             return book;
         }
         return null;
-    }public Book findBook2(int bookId) {
+    }
+
+    public Book findBook2(int bookId) {
         if (lstBooks == null || lstBooks.size()==0)
             return null;
         Book book = Book.getDummyBook(bookId);
@@ -31,6 +37,7 @@ public class Library {
         return lstBooks.get(index);
     }
 
+    @Override
     public boolean removeBook(int codigo) {
         if (lstBooks == null || lstBooks.size()==0)
             return false;
@@ -43,10 +50,12 @@ public class Library {
         return false;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
