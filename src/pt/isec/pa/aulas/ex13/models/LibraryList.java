@@ -1,9 +1,11 @@
 package pt.isec.pa.aulas.ex13.models;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
-public class LibraryList implements ILibrary {
+public class LibraryList implements ILibrary{
     private String name;
     private List<Book> lstBooks;
     public LibraryList(String s) {
@@ -14,6 +16,11 @@ public class LibraryList implements ILibrary {
     @Override
     public void addBook(String title, ArrayList<String> authors) {
         Book book = new Book(title,authors);
+        lstBooks.add(book);
+    }
+
+    @Override
+    public void addBook(Book book) {
         lstBooks.add(book);
     }
 
@@ -59,6 +66,13 @@ public class LibraryList implements ILibrary {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toStringSorted() {
+        ArrayList<Book> collection = new ArrayList<>(lstBooks);
+        Collections.sort(collection);
+        return collection.toString();
+     }
 
     @Override
     public String toString() {

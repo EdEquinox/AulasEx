@@ -1,8 +1,6 @@
 package pt.isec.pa.aulas.ex13.views;
 
-import pt.isec.pa.aulas.ex13.models.Book;
-import pt.isec.pa.aulas.ex13.models.ILibrary;
-import pt.isec.pa.aulas.ex13.models.LibraryList;
+import pt.isec.pa.aulas.ex13.models.*;
 import pt.isec.pa.aulas.utils.PAInput;
 
 import java.util.ArrayList;
@@ -13,7 +11,7 @@ public class LibraryUI {
         this.lib = lib;
     }
 
-    void addBook() {
+    void addRecentBook(){
         String title = PAInput.readString("Book title: ",false);
         String author;
         ArrayList<String> authors = new ArrayList<>();
@@ -24,7 +22,34 @@ public class LibraryUI {
         } while (!author.equalsIgnoreCase("exit"));
         if (authors.isEmpty())
             authors.add("Author unknown");
-        lib.addBook(title,authors);
+        String isbn = PAInput.readString("ISBN: ",true);
+        double preco = PAInput.readNumber("Preço: ");
+        RecentBook recentBook = new RecentBook(title,authors,isbn,preco);
+        lib.addBook(recentBook);
+    }
+    void addOldBook(){
+        String title = PAInput.readString("Book title: ",false);
+        String author;
+        ArrayList<String> authors = new ArrayList<>();
+        do {
+            author = PAInput.readString("Name of one author [\'exit\' to finish]: ",false);
+            if (author!=null && !author.equalsIgnoreCase("exit"))
+                authors.add(author);
+        } while (!author.equalsIgnoreCase("exit"));
+        if (authors.isEmpty())
+            authors.add("Author unknown");
+        int nCopias = PAInput.readInt("Número de cópias: ");
+        OldBook oldBook = new OldBook(title,authors,nCopias);
+        lib.addBook(oldBook);
+    }
+    void addBook() {
+        int escolha = PAInput.readInt("Recente (0) ou Antigo (1)? ");
+        if (escolha == 0){
+            addRecentBook();
+        } else {
+            addOldBook();
+        }
+
     }
 
     void findBook() {

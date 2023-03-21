@@ -21,6 +21,11 @@ public class LibrarySet implements ILibrary{
     }
 
     @Override
+    public void addBook(Book book) {
+        lstBooks.add(book);
+    }
+
+    @Override
     public Book findBook(int bookId) {
         if (lstBooks == null || lstBooks.size() == 0)
             return null;
@@ -53,6 +58,13 @@ public class LibrarySet implements ILibrary{
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toStringSorted() {
+        HashSet<Book> collection = new HashSet<>(lstBooks);
+
+        return collection.toString();
     }
 
     @Override

@@ -16,6 +16,11 @@ public class LibraryMap implements ILibrary{
     }
 
     @Override
+    public void addBook(Book book) {
+        lstBooks.put(book.getID(), book);
+    }
+
+    @Override
     public Book findBook(int bookId) {
         if (lstBooks == null || lstBooks.size() == 0)
             return null;
@@ -38,6 +43,13 @@ public class LibraryMap implements ILibrary{
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toStringSorted() {
+        HashMap<Integer,Book> collection = new HashMap<>(lstBooks);
+
+        return collection.toString();
     }
 
     @Override

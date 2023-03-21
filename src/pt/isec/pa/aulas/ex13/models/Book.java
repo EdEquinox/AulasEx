@@ -3,14 +3,14 @@ package pt.isec.pa.aulas.ex13.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book implements Comparable<Book>{
     private static int count = 0;
     private static int getNewID(){return ++count;}
     private int ID;
     private String title;
     private List<String> authors;
 
-    public Book(String title, List<String> authors) {
+    protected Book(String title, List<String> authors) {
         this.ID = getNewID();
         this.title = title;
         this.authors = authors;
@@ -78,5 +78,11 @@ public class Book {
     @Override
     public int hashCode() {
         return ID;
+    }
+
+
+    @Override
+    public int compareTo(Book o) {
+        return title.compareTo(o.title);
     }
 }
