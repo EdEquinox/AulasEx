@@ -3,13 +3,15 @@ package pt.isec.pa.aulas.ex24.models.fsm;
 import pt.isec.pa.aulas.ex24.models.data.Elevator;
 import pt.isec.pa.aulas.ex24.models.fsm.states.GroundFloorState;
 
+import java.util.Random;
+
 public class ElevatorContext {
     private IElevatorState state;
     private Elevator elevator;
 
     public ElevatorContext() {
-        this.elevator = new Elevator(0);
-        this.state = new GroundFloorState(this, elevator);
+        this.elevator = new Elevator(0,"olare");
+        this.state = ElevatorState.createState(ElevatorState.GROUND_FLOOR,this,elevator);
     }
 
     public ElevatorState getState(){
@@ -20,6 +22,7 @@ public class ElevatorContext {
         this.state = newstate;                              //A SERIO NAO PONHAS O PUBLIC
     }                                                       //NAO PONHAS MESMO
                                                            //significa package private
+
     public boolean up(){
         return state.up();
     }
@@ -30,6 +33,13 @@ public class ElevatorContext {
 
     public int getPiso(){
         return elevator.getPiso();
+    }
+    public boolean usePassword(String password){
+        return state.usePassword(password);
+    }
+
+    public boolean isMaintenance(){
+        return elevator.isUnderMaintenance();
     }
 
 }

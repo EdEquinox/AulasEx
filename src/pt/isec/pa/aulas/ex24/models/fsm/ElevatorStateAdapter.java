@@ -15,6 +15,12 @@ public abstract class ElevatorStateAdapter implements IElevatorState{
         elevatorContext.changeElevatorState(newState);
     }
 
+    protected void changeState(ElevatorState newState){
+        //elevatorContext.changeElevatorState(IElevatorState.createState(newState,elevatorContext,elevator));
+        //elevatorContext.changeElevatorState(ElevatorStateFactory.createState(newState,elevatorContext,elevator));
+        elevatorContext.changeElevatorState(ElevatorState.createState(newState,elevatorContext,elevator));
+    }
+
     @Override
     public boolean up() {
         return false;
@@ -25,4 +31,18 @@ public abstract class ElevatorStateAdapter implements IElevatorState{
         return false;
     }
 
+    @Override
+    public boolean underMaintenance() {
+        return false;
+    }
+
+    @Override
+    public int getProb() {
+        return 0;
+    }
+
+    @Override
+    public boolean usePassword(String password) {
+        return false;
+    }
 }

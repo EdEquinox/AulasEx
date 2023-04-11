@@ -6,9 +6,7 @@ import pt.isec.pa.aulas.ex24.models.fsm.states.GroundFloorState;
 import pt.isec.pa.aulas.ex24.models.fsm.states.MaintenanceState;
 import pt.isec.pa.aulas.ex24.models.fsm.states.SecondFloorState;
 
-public enum ElevatorState {
-    FIRST_FLOOR, SECOND_FLOOR, GROUND_FLOOR, MAINTENANCE;
-
+public class ElevatorStateFactory {
     static IElevatorState createState(ElevatorState type, ElevatorContext elevatorContext, Elevator elevator){
         return switch (type){
             case SECOND_FLOOR -> new SecondFloorState(elevatorContext,elevator);

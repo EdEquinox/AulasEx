@@ -41,8 +41,20 @@ public class ElevatorUI {
                 case SECOND_FLOOR -> {
                     secondFloor();
                 }
+                case MAINTENANCE -> {
+                    maintenance();
+                }
                 default -> finish = true;
             }
+        }
+    }
+
+    private void maintenance() {
+        System.out.println("Estou em manutenção!!! " );
+        String password = PAInput.readString("Password: ",true);
+        while (!elevator.usePassword(password)){
+            System.out.println("Chave não aceite. " );
+            password = PAInput.readString("Password: ",true);
         }
     }
 
