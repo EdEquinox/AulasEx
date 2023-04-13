@@ -1,5 +1,6 @@
 package pt.isec.pa.aulas.ex24.views.ui;
 
+import pt.isec.pa.aulas.ex24.models.data.Logger;
 import pt.isec.pa.aulas.ex24.models.fsm.ElevatorContext;
 import pt.isec.pa.aulas.utils.PAInput;
 
@@ -46,11 +47,13 @@ public class ElevatorUI {
                 }
                 default -> finish = true;
             }
+            //System.out.println(Logger.getInstance().getLogs());
         }
     }
 
     private void maintenance() {
-        System.out.println("Estou em manutenção!!! " );
+        //System.out.println("Estou em manutenção!!! " );
+        Logger.getInstance().log("Entrada em manutenção");
         String password = PAInput.readString("Password: ",true);
         while (!elevator.usePassword(password)){
             System.out.println("Chave não aceite. " );
@@ -59,7 +62,8 @@ public class ElevatorUI {
     }
 
     private void secondFloor() {
-        System.out.println("Estou no piso " + elevator.getPiso());
+        //System.out.println("Estou no piso " + elevator.getPiso());
+        Logger.getInstance().log("Entrada no piso " + elevator.getPiso());
         switch (PAInput.chooseOption("Elevador ",
                 "Descer", "Sair")) {
             case 1 -> elevator.down();
@@ -68,7 +72,8 @@ public class ElevatorUI {
     }
 
         private void groundFloor() {
-            System.out.println("Estou no piso " + elevator.getPiso());
+            //System.out.println("Estou no piso " + elevator.getPiso());
+            Logger.getInstance().log("Entrada no piso " + elevator.getPiso());
             switch (PAInput.chooseOption("Elevador ",
                     "Subir", "Sair")) {
                 case 1 -> elevator.up();
@@ -77,7 +82,8 @@ public class ElevatorUI {
         }
 
         private void firstFloor() {
-            System.out.println("Estou no piso " + elevator.getPiso());
+            //System.out.println("Estou no piso " + elevator.getPiso());
+            Logger.getInstance().log("Entrada no piso " + elevator.getPiso());
             switch (PAInput.chooseOption("Elevador ",
                     "Subir", "Descer", "Sair")) {
                 case 1 -> elevator.up();
