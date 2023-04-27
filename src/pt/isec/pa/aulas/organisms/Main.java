@@ -13,11 +13,14 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         EnvironmentManager environment = new EnvironmentManager();
-        //OrganismsUI ui = new OrganismsUI(environment);
-        OrganismsLanternaUI ui = new OrganismsLanternaUI(environment);
+        OrganismsUI ui = new OrganismsUI(environment);
+        //OrganismsLanternaUI ui = new OrganismsLanternaUI(environment);
+        //gameEngine.registerClient(environment);
+        //gameEngine.registerClient();
         GameEngine gameEngine = new GameEngine();
-        gameEngine.registerClient(environment);
-        gameEngine.registerClient(ui);
+        // Lambda expression para implementar IGameEngineEvolve
+        gameEngine.registerClient(environment::evolve);
+        gameEngine.registerClient((g,t) -> ui.show());
         gameEngine.start(500);
         gameEngine.waitForTheEnd();
     }
