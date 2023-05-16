@@ -2,4 +2,5 @@
 
 
 Voz amiga:
---module-path "caminho do javafx\lib" --add-modules ALL-MODULE-PATH
+> Add VM Options
+> --module-path "caminho do javafx\lib" --add-modules ALL-MODULE-PATH
