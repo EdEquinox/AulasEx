@@ -1,6 +1,9 @@
 package pt.isec.pa.aulas.exemploFSMjavaFX.model.fsm;
 
 import pt.isec.pa.aulas.exemploFSMjavaFX.model.data.GameBWData;
+import pt.isec.pa.aulas.exemploFSMjavaFX.model.data.History;
+
+import java.util.List;
 
 public abstract class GameBWStateAdapter implements IGameBWState {
     protected GameBWContext context;
@@ -38,5 +41,10 @@ public abstract class GameBWStateAdapter implements IGameBWState {
     @Override
     public boolean removeTwoBalls() {
         return false;
+    }
+
+    @Override
+    public List<History> getHistory() {
+        return null;
     }
 }

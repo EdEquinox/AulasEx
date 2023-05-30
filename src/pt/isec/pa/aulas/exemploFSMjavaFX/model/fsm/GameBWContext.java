@@ -1,6 +1,9 @@
 package pt.isec.pa.aulas.exemploFSMjavaFX.model.fsm;
 
 import pt.isec.pa.aulas.exemploFSMjavaFX.model.data.GameBWData;
+import pt.isec.pa.aulas.exemploFSMjavaFX.model.data.History;
+
+import java.util.List;
 
 public class GameBWContext {
     IGameBWState state;
@@ -53,6 +56,10 @@ public class GameBWContext {
 
     public boolean bagIsEmpty() {
         return data.bagIsEmpty();
+    }
+
+    public List<History> getHistory() {
+        return state.getHistory();
     }
 
 }

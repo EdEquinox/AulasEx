@@ -21,22 +21,22 @@ public class WaitBetState extends GameBWStateAdapter {
         switch (ball) {
             case WHITE -> {
                 data.betWon();
-                changeState(data.bagIsEmpty() ? GameBWState.BEGIN : GameBWState.WAIT_BET);
+                changeState(data.bagIsEmpty() ? GameBWState.SHOW_INFO : GameBWState.WAIT_BET);
                 return BetResult.WON;
             }
             case BLACK -> {
                 data.betLost();
-                changeState(data.bagIsEmpty() && data.getNrWhiteBallsWon()<1 ? GameBWState.BEGIN : GameBWState.LOST_WAIT_DECISION);
+                changeState(data.bagIsEmpty() && data.getNrWhiteBallsWon()<1 ? GameBWState.SHOW_INFO : GameBWState.LOST_WAIT_DECISION);
                 return BetResult.LOST;
             }
-            case NONE -> changeState(GameBWState.BEGIN);
+            case NONE -> changeState(GameBWState.SHOW_INFO);
         }
         return BetResult.ERROR;
     }
 
     @Override
     public void end() {
-        changeState(GameBWState.BEGIN);
+        changeState(GameBWState.SHOW_INFO);
     }
 
     @Override

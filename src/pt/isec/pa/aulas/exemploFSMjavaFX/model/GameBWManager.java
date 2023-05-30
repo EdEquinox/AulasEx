@@ -1,11 +1,13 @@
 package pt.isec.pa.aulas.exemploFSMjavaFX.model;
 
+import pt.isec.pa.aulas.exemploFSMjavaFX.model.data.History;
 import pt.isec.pa.aulas.exemploFSMjavaFX.model.fsm.BetResult;
 import pt.isec.pa.aulas.exemploFSMjavaFX.model.fsm.GameBWContext;
 import pt.isec.pa.aulas.exemploFSMjavaFX.model.fsm.GameBWState;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.List;
 
 public class GameBWManager {
     private GameBWContext fsm;
@@ -51,8 +53,11 @@ public class GameBWManager {
     public GameBWState getState() {
         return fsm.getState();
     }
+    public List<History> getHistory() {
+        return fsm.getHistory();
+    }
 
-    public int getNrWhiteBallsWon() {
+        public int getNrWhiteBallsWon() {
         return fsm.getNrWhiteBallsWon();
     }
 

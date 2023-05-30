@@ -13,11 +13,11 @@ public class LostWaitDecisionState extends GameBWStateAdapter {
     @Override
     public boolean loseWhiteball() {
         if (data.betLost_optionWhite()) {
-            changeState(data.bagIsEmpty() ? GameBWState.BEGIN : GameBWState.WAIT_BET);
+            changeState(data.bagIsEmpty() ? GameBWState.SHOW_INFO : GameBWState.WAIT_BET);
             return true;
         }
         if (data.bagIsEmpty())
-            changeState(GameBWState.BEGIN); // not needed but...!
+            changeState(GameBWState.SHOW_INFO); // not needed but...!
         return false;
     }
 
@@ -26,7 +26,7 @@ public class LostWaitDecisionState extends GameBWStateAdapter {
         if (data.bagIsEmpty() && data.getNrWhiteBallsWon()>0)
             return false;
         data.betLost_optionTwoBalls();
-        changeState(data.bagIsEmpty() ? GameBWState.BEGIN : GameBWState.WAIT_BET);
+        changeState(data.bagIsEmpty() ? GameBWState.SHOW_INFO : GameBWState.WAIT_BET);
         return true;
     }
 

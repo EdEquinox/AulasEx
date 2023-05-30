@@ -2,15 +2,18 @@ package pt.isec.pa.aulas.exemploFSMjavaFX.model.data;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class GameBWData {
     private static final int NR_BALLS = 10;
     private ArrayList<BallType> bag;
     private int nrWhiteBallsWon,nrWhiteBallsOut,nrBlackBallsOut;
     private int balls_bet = 0;
+    ArrayList<History> history;
 
     public GameBWData() {
         initGame();
+        history = new ArrayList<>();
     }
 
     public void initGame() {
@@ -48,6 +51,7 @@ public class GameBWData {
             return false;
         balls_bet = nr_balls;
         nrWhiteBallsWon -= balls_bet;
+        history.add(new History(nrWhiteBallsWon,nrWhiteBallsOut,nrBlackBallsOut,balls_bet,History.Type.BET));
         return true;
     }
 
@@ -79,17 +83,20 @@ public class GameBWData {
         }
         if (tempWhiteBalls>0)
             returnBalls(tempWhiteBalls,BallType.WHITE);
+        history.add(new History(nrWhiteBallsWon,nrWhiteBallsOut,nrBlackBallsOut,balls_bet,History.Type.BETWON));
     }
 
     public void betLost() {
         nrWhiteBallsOut += balls_bet;
         nrBlackBallsOut += 1;
+        history.add(new History(nrWhiteBallsWon,nrWhiteBallsOut,nrBlackBallsOut,balls_bet,History.Type.BETLOST));
     }
     public boolean betLost_optionWhite() {
         if (nrWhiteBallsWon < 1)
             return false;
         nrWhiteBallsWon -= 1;
         nrWhiteBallsOut += 1;
+        history.add(new History(nrWhiteBallsWon,nrWhiteBallsOut,nrBlackBallsOut,0,History.Type.LOSE));
         return true;
     }
     public void betLost_optionTwoBalls() {
@@ -105,5 +112,12 @@ public class GameBWData {
             nrWhiteBallsOut += 1;
         else if (ball2 == BallType.BLACK)
             bag.add(ball2);
+        history.add(new History(nrWhiteBallsWon,nrWhiteBallsOut,nrBlackBallsOut,0,History.Type.REMOVE));
+
     }
+
+    public List<History> getHistory(){
+        return List.copyOf(history);
+    }
+
 }
