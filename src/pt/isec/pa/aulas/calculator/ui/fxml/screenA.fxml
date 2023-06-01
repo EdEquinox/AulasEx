@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pt.isec.pa.aulas.calculator.ui.ScreenA"
+      prefHeight="80.0" prefWidth="200.0"
+      spacing="10">
+    <padding><Insets topRightBottomLeft="10" /></padding>
+    <HBox spacing="10">
+        <Label text="Test:"  style="-fx-font-size: 16;" minWidth="50"/>
+        <TextField promptText="test" prefWidth="1000" fx:id="tfTest" />
+    </HBox>
+    <HBox spacing="10">
+        <Button text="Cancel" prefWidth="1000"/>
+        <Button text="Confirm" prefWidth="1000" onAction="#onConfirm" />
+    </HBox>
+</VBox>
+

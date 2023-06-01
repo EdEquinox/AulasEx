@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pt.isec.pa.aulas.calculator.ui.CalculatorPane"
+      prefHeight="600.0" prefWidth="400.0"
+      fx:id="root" spacing="10">
+
+    <padding><Insets top="10" bottom="10" left="10" right="10" /> </padding>
+
+    <TextField text="0.0" fx:id="tfDisplay" prefHeight="1000" prefWidth="1000"
+               editable="false" id="display" />
+
+    <HBox prefHeight="1000" spacing="10">
+        <Button text="AC" onAction="#onAC" prefWidth="1000" prefHeight="1000"/>
+        <Button text="\%" onAction="#onPerc" prefWidth="1000" prefHeight="1000"/>
+        <Button text="+/-" onAction="#onMinusPlus" prefWidth="1000" prefHeight="1000"/>
+        <Button text="/" onAction="#onOp" prefWidth="1000" prefHeight="1000"/>
+    </HBox>
+    <HBox prefHeight="1000" spacing="10">
+        <Button text="7" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="8" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="9" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="*" onAction="#onOp" prefWidth="1000" prefHeight="1000"   />
+    </HBox>
+    <HBox prefHeight="1000" spacing="10">
+        <Button text="4" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="5" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="6" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="-" onAction="#onOp" prefWidth="1000" prefHeight="1000"   />
+    </HBox>
+    <HBox prefHeight="1000" spacing="10">
+        <Button text="1" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="2" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="3" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="+" onAction="#onOp" prefWidth="1000" prefHeight="1000"   />
+    </HBox>
+    <HBox prefHeight="1000" spacing="10">
+        <Button text="Pi" onAction="#onPi" prefWidth="1000" prefHeight="1000"  />
+        <Button text="0" onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="." onAction="#onDigit" prefWidth="1000" prefHeight="1000"/>
+        <Button text="=" onAction="#onOp" prefWidth="1000" prefHeight="1000"   />
+    </HBox>
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</VBox>
